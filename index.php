@@ -1,145 +1,205 @@
-<!DOCTYPE>
-<?php 
+<?php
 session_start();
 include("functions/functions.php");
-
+$page = "home";
+$title = "Homepage";
+$metaD = "Stickers Center Homepage";
+include("header.php");
 ?>
-<html>
-	<head>
-		<title>My Online Shop</title>
-		
-		
-	<link rel="stylesheet" href="styles/style.css" media="all" /> 
-	</head>
-	
-<body>
-	
-	<!--Main Container starts here-->
-	<div class="main_wrapper">
-	
-		<!--Header starts here-->
-		<div class="header_wrapper">
-		
-			<a href="index.php"><img id="logo" src="images/logo.gif" /> </a>
-			<img id="banner" src="images/ad_banner.gif" />
-		</div>
-		<!--Header ends here-->
-		
-		<!--Navigation Bar starts-->
-		<div class="menubar">
-			
-			<ul id="menu">
-				<li><a href="index.php">Home</a></li>
-				<li><a href="all_products.php">All Products</a></li>
-				<li><a href="customer/my_account.php">My Account</a></li>
-				<li><a href="#">Sign Up</a></li>
-				<li><a href="cart.php">Shopping Cart</a></li>
-				<li><a href="#">Contact Us</a></li>
-			
-			</ul>
-			
-			<div id="form">
-				<form method="get" action="results.php" enctype="multipart/form-data">
-					<input type="text" name="user_query" placeholder="Search a Product"/ > 
-					<input type="submit" name="search" value="Search" />
-				</form>
-			
-			</div>
-			
-		</div>
-		<!--Navigation Bar ends-->
-	
-		<!--Content wrapper starts-->
-		<div class="content_wrapper">
-		
-			<div id="sidebar">
-			
-				<div id="sidebar_title">Categories</div>
-				
-				<ul id="cats">
-				
-				<?php getCats(); ?>
-				
-				<ul>
-					
-				<div id="sidebar_title">Brands</div>
-				
-				<ul id="cats">
-					
-					<?php getBrands(); ?>
-				
-				<ul>
-			
-			
-			</div>
-		
-			<div id="content_area">
-			
-			<?php cart(); ?>
-			
-			<div id="shopping_cart"> 
-					
-					<span style="float:right; font-size:17px; padding:5px; line-height:40px;">
-					
-					<?php 
-					if(isset($_SESSION['customer_email'])){
-					echo "<b>Welcome:</b>" . $_SESSION['customer_email'] . "<b style='color:yellow;'>Your</b>" ;
-					}
-					else {
-					echo "<b>Welcome Guest:</b>";
-					}
-					?>
-					
-					<b style="color:yellow">Shopping Cart -</b> Total Items: <?php total_items();?> Total Price: <?php total_price(); ?> <a href="cart.php" style="color:yellow">Go to Cart</a>
-					
-					
-					<?php 
-					if(!isset($_SESSION['customer_email'])){
-					
-					echo "<a href='checkout.php' style='color:orange;'>Login</a>";
-					
-					}
-					else {
-					echo "<a href='logout.php' style='color:orange;'>Logout</a>";
-					}
-					
-					
-					
-					?>
-					
-					
-					
-					</span>
-			</div>
-			
-				<div id="products_box">
-				
-				<?php getPro(); ?>
-				<?php getCatPro(); ?>
-				<?php getBrandPro(); ?>
-				
-				</div>
-			
-			</div>
-		</div>
-		<!--Content wrapper ends-->
-		
-		
-		
-		<div id="footer">
-		
-		<h2 style="text-align:center; padding-top:30px;">&copy; 2014 by www.OnlineTuting.com</h2>
-		
-		</div>
-	
-	
-	
-	
-	
-	
-	</div> 
-<!--Main Container ends here-->
 
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
 
-</body>
-</html>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-6">
+                                <h1><span>Stickers</span> Center</h1>
+                                <h2>Wall Stickers & Wallpapers</h2>
+                                <p>Design your house as you wish with our wide range of products.</p>
+                                <button type="button" class="btn btn-default get">Get it now</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="images/home/themes/bedroom-wall-design-for-mint-green3.jpg" class="girl img-responsive" alt="" />
+                                <!-- <img src="../images/home/pricing.png"  class="pricing" alt="" /> -->
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>Stickers</span> Center</h1>
+                                <h2>100% Responsive Design</h2>
+                                <p>Design your house as you wish with our wide range of products. </p>
+                                <button type="button" class="btn btn-default get">Get it now</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="images/home/themes/livingroom-wall-design-classic-blue.jpg" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>Stickers</span> Center</h1>
+                                <h2>100% Responsive Design</h2>
+                                <p>Design your house as you wish with our wide range of products. </p>
+                                <button type="button" class="btn btn-default get">Get it now</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="images/home/themes/children-sailboat-wallpaper-bedroom-boys-room-blue.jpg" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--/slider-->
+
+<!--Main Container starts here-->
+<section>
+    <div class="container">
+        <div class="row">
+            <?php
+            include("left_menu.php");
+            ?>
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Features Items</h2>
+                    <div class="col-sm-4">
+                        <div id="products_box">
+                            <?php getPro(); ?>
+                            <?php getCatPro(); ?>
+                            <?php getBrandPro(); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="recommended_items">
+                <!--recommended_items-->
+                <h2 class="title text-center">
+                recommended items
+                </h2>
+                <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="images/home/recommended/wallpaper-bedroom-pink-classic-min.jpg" class="size200" alt="" />
+                                            <h2>$56</h2>
+                                            <p>Modern Wallpaper With Textured Linear Stripes </p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="images/home/recommended/wallpaper-livingroom-blue-classic.jpg" class="size200" alt="" />
+                                            <h2>$56</h2>
+                                            <p></p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="images/home/recommended/wallpaper-kids-room-pink-lines.jpg" class="size200" alt="" />
+                                            <h2>$56</h2>
+                                            <p></p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="images/home/recommended/wall-sticker-kids-room-boys-teens-with-sports-basketball-orange.jpg" class="size200" alt="" />
+                                            <h2>$56</h2>
+                                            <p></p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="images/home/recommended/wall-sticker-bedroom-with-stars-colorful1.jpg" class="size200" alt="" />
+                                            <h2>$56</h2>
+                                            <p></p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="images/home/recommended/wall-sticker-3d-kids-with-minion-colorful.jpg" class="size200" alt="" />
+                                            <h2>$56</h2>
+                                            <p></p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+
+            </div>
+        </div>
+        <!--/recommended_items-->
+
+    </div>
+</section>
+<?php
+include "footer.php";
+?>
