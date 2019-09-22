@@ -1,4 +1,4 @@
-# PHP-Online-Store
+# JS & PHP Online-Store
 
 The following steps can be taken in order to use the source code correctly. 
 
